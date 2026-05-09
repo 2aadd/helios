@@ -88,13 +88,13 @@ Inspired by [Pulsar](https://github.com/your-pulsar-link), HELIOS focuses purely
 **One-liner install:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/helios/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/2aadd/helios/main/install.sh | bash
 ```
 
 Or if you prefer to inspect before running:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/helios/main/install.sh -o install.sh
+curl -fsSL https://raw.githubusercontent.com/2aadd/helios/main/install.sh -o install.sh
 bash install.sh
 ```
 
