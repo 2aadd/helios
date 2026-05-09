@@ -23,7 +23,7 @@
 
 HELIOS is a terminal-based network monitoring tool for Linux. It gives you a real-time view of your network interfaces, active connections, open ports, and latency — all in a clean, color-coded CLI dashboard.
 
-Inspired by [Pulsar](https://github.com/your-pulsar-link), HELIOS focuses purely on network intelligence.
+Inspired by [Pulsar](https://github.com/2aadd/pulsar), HELIOS focuses purely on network intelligence.
 
 ---
 
