@@ -191,5 +191,5 @@ MIT — do whatever you want with it.
 ---
 
 <div align="center">
-<sub>Built with ☀ — part of the <strong>Pulsar</strong> tools family</sub>
+<sub>Built by <strong>Ali Ibrahimov</strong></sub>
 </div>
