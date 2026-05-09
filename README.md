@@ -85,11 +85,16 @@ Inspired by [Pulsar](https://github.com/your-pulsar-link), HELIOS focuses purely
 
 ## Installation
 
-**Clone and install:**
+**One-liner install:**
 
 ```bash
-git clone https://github.com/yourusername/helios.git
-cd helios
+curl -fsSL https://raw.githubusercontent.com/yourusername/helios/main/install.sh | bash
+```
+
+Or if you prefer to inspect before running:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yourusername/helios/main/install.sh -o install.sh
 bash install.sh
 ```
 

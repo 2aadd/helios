@@ -11,8 +11,8 @@ BD='\033[1m'
 R='\033[0m'
 
 INSTALL_PATH="/usr/local/bin/helios"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-HELIOS_SRC="$SCRIPT_DIR/helios.py"
+HELIOS_URL="https://raw.githubusercontent.com/yourusername/helios/main/helios.py"
+TMP_FILE="$(mktemp /tmp/helios.XXXXXX.py)"
 
 echo -e "${YELLOW}${BD}"
 echo "  ██╗  ██╗███████╗██╗     ██╗ ██████╗ ███████╗"
@@ -44,10 +44,13 @@ fi
 
 echo -e "${GRAY}Detected OS: $(uname -s) $(uname -r)${R}"
 
-# ── Check helios.py exists
-if [[ ! -f "$HELIOS_SRC" ]]; then
-    echo -e "${RED}✗ helios.py not found in $SCRIPT_DIR${R}"
-    echo -e "${GRAY}  Make sure install.sh is in the same folder as helios.py${R}\n"
+# ── Check curl
+echo -ne "${GRAY}Checking curl...      ${R}"
+if command -v curl &>/dev/null; then
+    echo -e "${GREEN}✔ available${R}"
+else
+    echo -e "${RED}✗ curl not found${R}"
+    echo -e "${GRAY}  Install it with: sudo apt install curl${R}\n"
     exit 1
 fi
 
@@ -84,13 +87,24 @@ else
     echo -e "${GREEN}✔ installed${R}"
 fi
 
+# ── Download helios.py
+echo -ne "${GRAY}Downloading helios... ${R}"
+if curl -fsSL "$HELIOS_URL" -o "$TMP_FILE" 2>/dev/null; then
+    echo -e "${GREEN}✔ downloaded${R}"
+else
+    echo -e "${RED}✗ download failed${R}"
+    echo -e "${GRAY}  Check your internet connection or the URL:${R}"
+    echo -e "${GRAY}  $HELIOS_URL${R}\n"
+    rm -f "$TMP_FILE"
+    exit 1
+fi
+
 # ── Copy to /usr/local/bin
 echo -ne "${GRAY}Installing helios...  ${R}"
-sudo cp "$HELIOS_SRC" "$INSTALL_PATH"
+sudo cp "$TMP_FILE" "$INSTALL_PATH"
 sudo chmod +x "$INSTALL_PATH"
-
-# Fix shebang to use system python3
 sudo sed -i '1s|.*|#!/usr/bin/env python3|' "$INSTALL_PATH"
+rm -f "$TMP_FILE"
 
 echo -e "${GREEN}✔ installed to $INSTALL_PATH${R}"
 
