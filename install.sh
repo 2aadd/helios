@@ -102,7 +102,7 @@ fi
 # ── Copy to /usr/local/bin
 echo -ne "${GRAY}Installing helios...  ${R}"
 sudo cp "$TMP_FILE" "$INSTALL_PATH"
-sudo chmod +x "$INSTALL_PATH"
+sudo chmod 755 "$INSTALL_PATH"
 sudo sed -i '1s|.*|#!/usr/bin/env python3|' "$INSTALL_PATH"
 rm -f "$TMP_FILE"
 
